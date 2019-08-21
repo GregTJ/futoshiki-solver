@@ -1,3 +1,6 @@
+"""Defines a class for storing and solving futoshiki puzzles."""
+
+
 class Puzzle:
     __slots__ = {'puzzle', 'constraints', 'size'}
 
@@ -7,7 +10,7 @@ class Puzzle:
         self.size = size
 
     def __str__(self):
-        """Magic method for converting puzzle object to text representation."""
+        """Magic method for converting puzzle objects into their text representations."""
         output = ['|', '|']
 
         for i, j in enumerate(zip(self.puzzle, self.constraints)):
@@ -37,7 +40,7 @@ class Puzzle:
 
     @classmethod
     def read_puzzle(cls, filename):
-        """Class method for converting text representation of puzzle into puzzle object."""
+        """Class method for converting text file representation of puzzles into puzzle objects."""
         with open(filename, 'r') as file:
             # Read puzzle size.
             size = int(file.read(1))
@@ -149,24 +152,3 @@ class Puzzle:
         # Return false if puzzle is unsolvable.
         return False
 
-# Wait for valid user input (a puzzle file.)
-while True:
-    fn = input('Puzzle file: ')
-    try:
-        p = Puzzle.read_puzzle(fn)
-        break
-
-    except FileNotFoundError:
-        print(f'File "{fn}" not found.')
-
-print('Unsolved:')
-print(p)
-
-if p.solve():
-    print('Solved:')
-    print(p)
-
-else:
-    print('Puzzle is unsolvable.')
-
-input()
