@@ -7,6 +7,7 @@ class Puzzle:
         self.size = size
 
     def __str__(self):
+        """Magic method for converting puzzle object to text representation."""
         output = ['|', '|']
 
         for i, j in enumerate(zip(self.puzzle, self.constraints)):
@@ -36,6 +37,7 @@ class Puzzle:
 
     @classmethod
     def read_puzzle(cls, filename):
+        """Class method for converting text representation of puzzle into puzzle object."""
         with open(filename, 'r') as file:
             # Read puzzle size.
             size = int(file.read(1))
@@ -61,6 +63,7 @@ class Puzzle:
             return cls(puzzle, constraints, size)
 
     def solve(self):
+        """A recursive backtracking method to solve futoshiki puzzles."""
         def index(i, j):
             # 2D Index -> Flat Index (Row Major)
             return i * self.size + j
@@ -146,7 +149,7 @@ class Puzzle:
         # Return false if puzzle is unsolvable.
         return False
 
-
+# Wait for valid user input (a puzzle file.)
 while True:
     fn = input('Puzzle file: ')
     try:
