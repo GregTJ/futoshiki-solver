@@ -2,5 +2,5 @@
 
 Solves [Futoshiki](https://en.wikipedia.org/wiki/Futoshiki) puzzles using a backtracking metaheuristic.\
 \
-_An animation of the algorithm finding a partial solution:_\
+An animation of the algorithm finding a partial solution:\
 ![](backtracking.gif)
